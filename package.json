@@ -4,6 +4,7 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
+    "postinstall": "install-app-deps",
     "start": "electron ."
   },
   "repository": "https://github.com/edoardo86/electron-starter-kit",
@@ -17,9 +18,11 @@
   "author": "Edoardo Monti",
   "license": "MIT",
   "devDependencies": {
-    "electron": "~2.0.0"
+    "electron": "^2.0.0",
+    "electron-builder": "^20.13.4"
   },
   "dependencies": {
-    "angular": "^1.7.0"
+    "angular": "^1.7.0",
+    "sqlite3": "^3.1.8"
   }
 }

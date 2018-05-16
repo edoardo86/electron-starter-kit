@@ -1,60 +1,51 @@
 const electron = require('electron')
-// Module to control application life.
+// Modulo per l'applicazione
 const app = electron.app
-// Module to create native browser window.
+// Modulo per creare una finestra del browser nativa.
 const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
+// imposto una viariabile globale per l'oggetto window
 let mainWindow
 
 function createWindow () {
-  // Create the browser window.
+  // Crea la finestra del browser.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
-  // and load the index.html of the app.
+  // e carica l'index.html dell'app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }));
 
-  // Open the DevTools.
+  // Apri il DevTools.
   // mainWindow.webContents.openDevTools()
 
-  // Emitted when the window is closed.
+  // funzione quando la finestra è chiusa.
   mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null
   })
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
+// Questo metodo verrà chiamato quando Electron ha terminato l'inizializzazione ed è pronto per creare finestre del browser.
+// Alcune API possono essere utilizzate solo dopo che si verifica questo evento.
 app.on('ready', createWindow)
 
-// Quit when all windows are closed.
+// Esci quando tutte le finestre sono chiuse.
 app.on('window-all-closed', function () {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
+  // Su OS X è normale che le applicazioni e la loro barra dei menu rimangano attive finché l'utente non si chiude esplicitamente con Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
 app.on('activate', function () {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
+  // Su OS X è normale ricreare una finestra nell'app quando si fa clic sull'icona del dock e non ci sono altre finestre aperte.
   if (mainWindow === null) {
     createWindow()
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
