@@ -11,10 +11,10 @@ function config($stateProvider, $urlRouterProvider) {
         controller: 'HomeCtrl',
         //controllerAs: 'ctrl'
       })    
-      .state('product-list', {
-        url: '/product-list',
-        templateUrl: 'views/product-list.html',
-        controller: 'ProductCtrl',
+      .state('secondpage', {
+        url: '/secondpage',
+        templateUrl: 'views/secondpage.html',
+        controller: 'secondpageCtrl',
         controllerAs: 'ctrl'
       })  
       $urlRouterProvider.otherwise('/');
@@ -34,14 +34,8 @@ app.controller('HomeCtrl',function ($scope, $rootScope) {
 
 });
 
-app.controller('ProductCtrl',function ($scope, $rootScope) {
+app.controller('secondpageCtrl',function ($scope, $rootScope) {
 	
-	console.log('product controller loaded');
+	console.log('secondpage controller loaded');
   
-});
-
-app.controller('LocationCtrl',function ($scope) {
-	
-	console.log('location controller loaded');
-
 });
